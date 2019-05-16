@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IWeapon
+public class Staff : MonoBehaviour, IWeapon, IProjectileWeapon
 {
     public Animator animator;
     public List<BaseStat> Stats { get; set; }
 
+    public Transform ProjectileSpawn{ get; set; }
+    Fireball fireball;
+
     void Start()
     {
+        fireball = Resources.Load<Fireball>("Weapons/Projectiles/Fireball");
         animator = GetComponentInParent<Animator>();
     }
     public void PerformAttack()
@@ -35,12 +39,10 @@ public class Sword : MonoBehaviour, IWeapon
         } 
     }
 
-    //
-    void OnTriggerEnter(Collider col)
+    public void CastProjectile()
     {
-        if (col.tag == "Enemy")
-        {
-            col.GetComponent<IEnemy>().TakeDamange(Stats[0].GetCalculatedStatValue());
-        }
+        Fireball fireballInstance = Instantiate(fireball, ProjectileSpawn.position, ProjectileSpawn.rotation);
+        fireballInstance.Direction = ProjectileSpawn.forward;
+        throw new System.NotImplementedException();
     }
 }
