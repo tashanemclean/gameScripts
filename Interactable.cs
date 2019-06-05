@@ -14,8 +14,9 @@ public class Interactable : MonoBehaviour
         hasInteracted = false;
         this.playerAgent = playerAgent;
         playerAgent.stoppingDistance = 2f;
-        playerAgent.destination = this.transform.position;
+        //playerAgent.destination = this.transform.position;
     }
+
 
     void Update()
     {

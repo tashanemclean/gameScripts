@@ -13,7 +13,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Start()
     {
-        //spawnProjectile = transform.Find("ProjectileSpawn");
+        spawnProjectile = transform.Find("ProjectileSpawn");
         characterStats = GetComponent<CharacterStats>();
     }
 

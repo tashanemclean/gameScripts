@@ -34,7 +34,7 @@ public class WorldInteraction : MonoBehaviour
 
 
         ApplyInput(moveAxis, turnAxis);
-        if (Input.GetKeyDown(KeyCode.W)) anim.SetInteger("condition", 1);
+        if (Input.GetKey(KeyCode.W)) anim.SetInteger("condition", 1);
         else
         {
             if (Input.GetKeyUp(KeyCode.W))
@@ -44,23 +44,52 @@ public class WorldInteraction : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.A)) anim.SetInteger("condition", 1);
+        if (Input.GetKey(KeyCode.A)) anim.SetInteger("condition", 1);
         else
         {
             if (Input.GetKeyUp(KeyCode.A))
             {
                 anim.SetInteger("condition", 0);
             }
+
         }
 
-        if (Input.GetKeyDown(KeyCode.D)) anim.SetInteger("condition", 1);
+        if (Input.GetKey(KeyCode.D)) anim.SetInteger("condition", 1);
         else
         {
             if (Input.GetKeyUp(KeyCode.D))
             {
                 anim.SetInteger("condition", 0);
             }
+
         }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            anim.SetInteger("condition", 1);
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            anim.SetInteger("condition", 1);
+        }
+        else
+        {
+            if (Input.GetKeyUp(KeyCode.D) && Input.GetKey(KeyCode.W))
+            {
+                anim.SetInteger("condition", 1);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.A)) anim.SetInteger("condition", 1);
+        else
+        {
+            if (Input.GetKeyUp(KeyCode.A) && Input.GetKey(KeyCode.W))
+            {
+                anim.SetInteger("condition", 1);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.X)) anim.SetTrigger("Base_Attack");
         if (Input.GetKeyDown(KeyCode.Z)) anim.SetTrigger("Special_Attack");
     }

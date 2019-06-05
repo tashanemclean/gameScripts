@@ -36,13 +36,19 @@ public class Staff : MonoBehaviour, IWeapon, IProjectileWeapon
             {
                 GetComponentInChildren<BoxCollider>().enabled = false;
             }
-        } 
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Fireball fireballInstance = Instantiate(fireball, ProjectileSpawn.position, ProjectileSpawn.rotation);
+            fireballInstance.Direction = ProjectileSpawn.forward;
+        }
+ 
     }
 
     public void CastProjectile()
     {
-        Fireball fireballInstance = Instantiate(fireball, ProjectileSpawn.position, ProjectileSpawn.rotation);
-        fireballInstance.Direction = ProjectileSpawn.forward;
-        throw new System.NotImplementedException();
+    //    Fireball fireballInstance = Instantiate(fireball, ProjectileSpawn.position, ProjectileSpawn.rotation);
+    //    fireballInstance.Direction = ProjectileSpawn.forward;
     }
 }
